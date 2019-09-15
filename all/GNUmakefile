@@ -11,7 +11,7 @@ RAPPER=rapper
 
 .PHONY: all
 
-all: cc.ttl foaf.ttl dc.ttl dc-old.ttl rdf.ttl rdfs.ttl schema.ttl dbpont.ttl
+all: cc.ttl foaf.ttl dc.ttl dc-old.ttl rdf.ttl rdfs.ttl schema.ttl dbpont.ttl prov.ttl
 
 # vann.ttl:
 # This used to be available at http://vocab.org/vann/.turtle , the
@@ -49,4 +49,6 @@ dbpont.ttl: | GNUmakefile
 	$(RAPPER) dbpedia_2014.owl -o turtle > dbpont.ttl
 	$(RM) dbpedia_2014.owl
 
+prov.ttl: | GNUmakefile
+	$(CURL) --header "Accept: $(TTL)" 'https://www.w3.org/ns/prov#' --output "$@"
 
