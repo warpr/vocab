@@ -1,8 +1,8 @@
 #!/bin/bash
 
+TTL=text/turtle
+TTL2=application/x-turtle
 JSONLD=application/ld+json
-TTL=application/x-turtle
-TTL2=text/turtle
 RDF=application/rdf+xml
 N3=text/rdf+n3
 NTRIPLES=text/plain
