@@ -1,0 +1,67 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ndo: <http://www.semanticdesktop.org/ontologies/2010/04/30/ndo#> .
+@prefix nrl: <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#> .
+@prefix nuao: <http://www.semanticdesktop.org/ontologies/2010/01/25/nuao#> .
+@prefix nao: <http://www.semanticdesktop.org/ontologies/2007/08/15/nao#> .
+@prefix nmo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#> .
+@prefix nco: <http://www.semanticdesktop.org/ontologies/2007/03/22/nco#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#> .
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+
+<http://www.semanticdesktop.org/ontologies/2010/04/30/ndo#>
+    nao:description "The Nepomuk Download Ontology provides classes and properties to describe file downloads." ;
+    nao:hasDefaultNamespace "http://www.semanticdesktop.org/ontologies/2010/04/30/ndo#" ;
+    nao:hasDefaultNamespaceAbbreviation "ndo" ;
+    nao:lastModified "2010-04-30T09:38:49Z" ;
+    nao:prefLabel "Nepomuk Download Ontology " ;
+    nao:serializationLanguage "TriG" ;
+    nao:status "Testing" ;
+    nao:version "${SHAREDDESKTOPONTOLOGIES_VERSION}" ;
+    nrl:updatable "0" ;
+    a nrl:DocumentGraph, nrl:KnowledgeBase .
+
+ndo:DownloadEvent
+    a rdfs:Class ;
+    rdfs:comment "A single event (from the point of view of the user) of downloading of a file or a set of files. Use nuao:involves to indicate the files involved. The event is assigned to downloaded copies of files. Can be assigned to multiple files." ;
+    rdfs:label "download event" ;
+    rdfs:subClassOf nuao:DesktopEvent .
+
+ndo:P2PFile
+    a rdfs:Class ;
+    rdfs:comment "A file available via a peer-to-peer network" ;
+    rdfs:label "P2P file" ;
+    rdfs:subClassOf nfo:RemoteDataObject .
+
+ndo:Torrent
+    a rdfs:Class ;
+    rdfs:comment "A .torrent file which contains references(ndo:TorrentedFile) to files available via BitTorrent. The references are pointed to via nie:hasLogicalPart" ;
+    rdfs:label "torrent" ;
+    rdfs:subClassOf nie:InformationElement .
+
+ndo:TorrentedFile
+    a rdfs:Class ;
+    rdfs:comment "A file available via a BitTorrent peer-to-peer network" ;
+    rdfs:label "torrented file" ;
+    rdfs:subClassOf ndo:P2PFile .
+
+ndo:copiedFrom
+    a rdf:Property ;
+    rdfs:comment "Links a DataObject with its copy. This relation means that originally the Data Objects were copies but might have changed subsequentially." ;
+    rdfs:domain nie:DataObject ;
+    rdfs:label "copied from" ;
+    rdfs:range nie:DataObject .
+
+ndo:referrer
+    a rdf:Property ;
+    rdfs:comment "Points to the Information Element that contained the link to the download source which was used in the download event." ;
+    rdfs:domain ndo:DownloadEvent ;
+    rdfs:label "referrer" ;
+    rdfs:range nie:InformationElement .
+
+<http://www.semanticdesktop.org/ontologies/2010/04/30/ndo/metadata>
+    nao:serializationLanguage "TriG" ;
+    nrl:coreGraphMetadataFor <http://www.semanticdesktop.org/ontologies/2010/04/30/ndo#> ;
+    a nrl:DocumentGraph, nrl:GraphMetadata .
+

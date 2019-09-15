@@ -1,0 +1,392 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix nrl: <http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#> .
+@prefix nao: <http://www.semanticdesktop.org/ontologies/2007/08/15/nao#> .
+@prefix nco: <http://www.semanticdesktop.org/ontologies/2007/03/22/nco#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#> .
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix nmm: <http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#> .
+
+<http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#>
+    nao:description "The Nepomuk Multimedia Ontology defines metadata properties and classes for multimedia files." ;
+    nao:hasDefaultNamespace "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#" ;
+    nao:hasDefaultNamespaceAbbreviation "nmm" ;
+    nao:lastModified "2012-08-23T97:51:29" ;
+    nao:prefLabel "Nepomuk Multimedia Ontology" ;
+    nao:serializationLanguage "TriG" ;
+    nao:status "Testing" ;
+    nao:version "${SHAREDDESKTOPONTOLOGIES_VERSION}" ;
+    nrl:updatable "0" ;
+    a nrl:DocumentGraph, nrl:Ontology .
+
+nmm:Movie
+    a rdfs:Class ;
+    rdfs:comment "A Movie" ;
+    rdfs:label "movie" ;
+    rdfs:subClassOf nfo:Video .
+
+nmm:MusicAlbum
+    a rdfs:Class ;
+    rdfs:comment "The music album as provided by the publisher. Not to be confused with media lists or collections." ;
+    rdfs:label "music album" ;
+    rdfs:subClassOf nfo:MediaList .
+
+nmm:MusicPiece
+    a rdfs:Class ;
+    rdfs:comment "Used to assign music-specific properties such a BPM to video and audio" ;
+    rdfs:label "music" ;
+    rdfs:subClassOf nfo:Audio .
+
+nmm:TVSeason
+    a rdfs:Class ;
+    rdfs:comment "A season of a TV Show" ;
+    rdfs:label "tv season" ;
+    rdfs:subClassOf nie:InformationElement .
+
+nmm:TVSeries
+    a rdfs:Class ;
+    rdfs:comment "A TV Series has multiple seasons and episodes" ;
+    rdfs:label "tv series" ;
+    rdfs:subClassOf nie:InformationElement .
+
+nmm:TVShow
+    a rdfs:Class ;
+    rdfs:comment "A TV Show" ;
+    rdfs:label "tv show" ;
+    rdfs:subClassOf nfo:Video .
+
+nmm:actor
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "Actor" ;
+    rdfs:domain nfo:Video ;
+    rdfs:label "actor" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:albumArtist
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "The artist of a music album, not to be confused with the performers of the individual music pieces." ;
+    rdfs:domain nmm:MusicAlbum ;
+    rdfs:label "album artist" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:albumConductor
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "The conductor of the orchestra of a classical music album." ;
+    rdfs:domain nmm:MusicAlbum ;
+    rdfs:label "album conductor" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:albumGain
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "ReplayGain album(audiophile) gain" ;
+    rdfs:domain nmm:MusicAlbum ;
+    rdfs:label "album gain" ;
+    rdfs:range xsd:float .
+
+nmm:albumPeakGain
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "ReplayGain album(audiophile) peak gain" ;
+    rdfs:domain nmm:MusicAlbum ;
+    rdfs:label "album peak gain" ;
+    rdfs:range xsd:float .
+
+nmm:albumProducer
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "The producer of a music album." ;
+    rdfs:domain nmm:MusicAlbum ;
+    rdfs:label "album producer" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:albumTrackCount
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "The number of tracks in a music album." ;
+    rdfs:domain nmm:MusicAlbum ;
+    rdfs:label "album track count" ;
+    rdfs:range xsd:integer .
+
+nmm:artwork
+    a rdf:Property ;
+    rdfs:comment "Associated Artwork" ;
+    rdfs:domain nfo:Media ;
+    rdfs:label "artwork" ;
+    rdfs:range nfo:Image ;
+    rdfs:subPropertyOf nfo:depiction .
+
+nmm:assistantDirector
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:domain nfo:Video ;
+    rdfs:label "assistant director" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:audienceRating
+    a rdf:Property ;
+    rdfs:comment "Rating used to identify appropriate audience for video (MPAA rating, BBFC, FSK, TV content rating, etc.)" ;
+    rdfs:domain nfo:Video ;
+    rdfs:label "audience rating" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf nao:rating .
+
+nmm:beatsPerMinute
+    a rdf:Property ;
+    rdfs:comment "beats per minute" ;
+    rdfs:domain nmm:MusicPiece ;
+    rdfs:label "Beats per minute" ;
+    rdfs:range xsd:integer .
+
+nmm:cinematographer
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:domain nfo:Video ;
+    rdfs:label "cinematographer" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:composer
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "Composer" ;
+    rdfs:domain nmm:MusicPiece ;
+    rdfs:label "composer" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:director
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "Director" ;
+    rdfs:domain nfo:Video ;
+    rdfs:label "director" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:episodeNumber
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:domain nmm:TVShow ;
+    rdfs:label "Episode number" ;
+    rdfs:range xsd:integer .
+
+nmm:genre
+    a rdf:Property ;
+    rdfs:comment "Genre" ;
+    rdfs:domain nfo:Media ;
+    rdfs:label "genre" ;
+    rdfs:range xsd:string .
+
+nmm:hasEpisode
+    nrl:inverseProperty nmm:series ;
+    a rdf:Property ;
+    rdfs:comment "A TVSeries has many episodes" ;
+    rdfs:domain nmm:TVSeries ;
+    rdfs:label "has episode" ;
+    rdfs:range nmm:TVShow .
+
+nmm:hasSeason
+    nrl:inverseProperty nmm:seasonOf ;
+    a rdf:Property ;
+    rdfs:comment "Relates a TV Series to its seasons" ;
+    rdfs:domain nmm:TVSeries ;
+    rdfs:label "has season" ;
+    rdfs:range nmm:TVSeason ;
+    rdfs:subPropertyOf nie:hasLogicalPart .
+
+nmm:hasSeasonEpisode
+    nrl:inverseProperty nmm:isPartOfSeason ;
+    a rdf:Property ;
+    rdfs:comment "Relates a TV Show season to its episodes" ;
+    rdfs:domain nmm:TVSeason ;
+    rdfs:label "has episode" ;
+    rdfs:range nmm:TVShow ;
+    rdfs:subPropertyOf nie:hasLogicalPart .
+
+nmm:internationalStandardRecordingCode
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "ISRC ID. Format: 'CC-XXX-YY-NNNNN'" ;
+    rdfs:domain nmm:MusicAlbum ;
+    rdfs:label "international standard recording code" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf nie:identifier .
+
+nmm:isPartOfSeason
+    nrl:inverseProperty nmm:hasSeasonEpisode ;
+    nrl:maxCardinality 1 ;
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "Relates a TV Show to its season" ;
+    rdfs:domain nmm:TVShow ;
+    rdfs:label "season" ;
+    rdfs:range nmm:TVSeason ;
+    rdfs:subPropertyOf nie:isLogicalPartOf .
+
+nmm:lyricist
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "Lyricist" ;
+    rdfs:domain nmm:MusicPiece ;
+    rdfs:label "lyricist" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:musicAlbum
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "Album the music belongs to" ;
+    rdfs:domain nmm:MusicPiece ;
+    rdfs:label "album" ;
+    rdfs:range nmm:MusicAlbum ;
+    rdfs:subPropertyOf nie:isLogicalPartOf .
+
+nmm:musicBrainzAlbumID
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "MusicBrainz album ID" ;
+    rdfs:domain nmm:MusicAlbum ;
+    rdfs:label "musicbrainz album ID" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf nie:identifier .
+
+nmm:musicBrainzTrackID
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "MusicBrainz track ID" ;
+    rdfs:domain nmm:MusicPiece ;
+    rdfs:label "musicbrainz track ID" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf nie:identifier .
+
+nmm:musicCDIdentifier
+    a rdf:Property ;
+    rdfs:comment "Music CD identifier to for databases like FreeDB.org. This property is intended for music that comes from a CD, so that the CD can be identified in external databases." ;
+    rdfs:domain nmm:MusicAlbum ;
+    rdfs:label "music CD identifier" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf nie:identifier .
+
+nmm:performer
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "Performer" ;
+    rdfs:domain nmm:MusicPiece ;
+    rdfs:label "performer" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:producer
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "Producer" ;
+    rdfs:domain nfo:Video ;
+    rdfs:label "producer" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+nmm:releaseDate
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "The date the media was released." ;
+    rdfs:domain nfo:Media ;
+    rdfs:label "release date" ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf nie:informationElementDate .
+
+nmm:season
+    nao:deprecated true ;
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "The season number. This property is deprecated. Use nmm:Season and nmm:hasSeason instead." ;
+    rdfs:domain nmm:TVShow ;
+    rdfs:label "Season" ;
+    rdfs:range xsd:integer .
+
+nmm:seasonNumber
+    nrl:cardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "The number of a season" ;
+    rdfs:domain nmm:TVSeason ;
+    rdfs:label "season number" ;
+    rdfs:range xsd:integer .
+
+nmm:seasonOf
+    nrl:cardinality 1 ;
+    nrl:inverseProperty nmm:hasSeason ;
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "Relates a TV Season to its series" ;
+    rdfs:domain nmm:TVSeason ;
+    rdfs:label "has season" ;
+    rdfs:range nmm:TVSeries ;
+    rdfs:subPropertyOf nie:isLogicalPartOf .
+
+nmm:series
+    nrl:inverseProperty nmm:hasEpisode ;
+    nrl:maxCardinality 1 ;
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "series" ;
+    rdfs:domain nmm:TVShow ;
+    rdfs:label "series" ;
+    rdfs:range nmm:TVSeries .
+
+nmm:setNumber
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "The part of a set the audio came from." ;
+    rdfs:domain nmm:MusicPiece ;
+    rdfs:label "set number" ;
+    rdfs:range xsd:integer .
+
+nmm:setSize
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "The number of parts in the set." ;
+    rdfs:domain nmm:MusicAlbum ;
+    rdfs:label "set size" ;
+    rdfs:range xsd:integer .
+
+nmm:synopsis
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "Long form description of video content (plot, premise, etc.)" ;
+    rdfs:domain nfo:Video ;
+    rdfs:label "synopsis" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf nie:description .
+
+nmm:trackGain
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "ReplayGain track gain" ;
+    rdfs:domain nmm:MusicPiece ;
+    rdfs:label "track gain" ;
+    rdfs:range xsd:float .
+
+nmm:trackNumber
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "Track number of the music in its album" ;
+    rdfs:domain nmm:MusicPiece ;
+    rdfs:label "track number" ;
+    rdfs:range xsd:integer .
+
+nmm:trackPeakGain
+    nrl:maxCardinality 1 ;
+    a rdf:Property ;
+    rdfs:comment "ReplayGain track peak gain" ;
+    rdfs:domain nmm:MusicPiece ;
+    rdfs:label "track peak gain" ;
+    rdfs:range xsd:float .
+
+nmm:writer
+    a nrl:DefiningProperty, rdf:Property ;
+    rdfs:comment "Writer" ;
+    rdfs:domain nfo:Video ;
+    rdfs:label "writer" ;
+    rdfs:range nco:Contact ;
+    rdfs:subPropertyOf nco:contributor .
+
+<http://www.semanticdesktop.org/ontologies/2009/02/19/nmm/metadata>
+    nao:serializationLanguage "TriG" ;
+    nrl:coreGraphMetadataFor <http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#> ;
+    a nrl:DocumentGraph, nrl:GraphMetadata .
+
