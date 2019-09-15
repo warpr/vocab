@@ -1,0 +1,23 @@
+{
+  "name": "@warpr/vocab",
+  "version": "1.0.0",
+  "description": "A collection of linked-data (RDF) ontologies/vocabularies",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:warpr/vocab.git"
+  },
+  "keywords": [
+    "linked-data",
+    "rdf",
+    "vocab"
+  ],
+  "author": "Kuno Woudt <kuno@frob.nl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/warpr/vocab/issues"
+  },
+  "homepage": "https://github.com/warpr/vocab#readme"
+}
