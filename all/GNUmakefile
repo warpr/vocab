@@ -11,7 +11,17 @@ RAPPER=rapper
 
 .PHONY: all
 
-all: foaf.ttl dc.ttl rdf.ttl rdfs.ttl schema.ttl dbpont.ttl
+all: cc.ttl foaf.ttl dc.ttl rdf.ttl rdfs.ttl schema.ttl dbpont.ttl
+
+# vann.ttl:
+# This used to be available at http://vocab.org/vann/.turtle , the
+# internet archive has a copy at:
+# https://web.archive.org/web/20140905173355/http://vocab.org/vann/.turtle
+
+cc.ttl: | GNUmakefile
+	$(CURL) 'http://creativecommons.org/ns#' --output "cc.rdfa"
+	$(RAPPER) -i rdfa cc.rdfa -o turtle > cc.ttl
+	$(RM) cc.rdfa
 
 foaf.ttl: | GNUmakefile
 	$(CURL) --header "Accept: $(RDF)" 'http://xmlns.com/foaf/0.1/' --output "foaf.rdf"
