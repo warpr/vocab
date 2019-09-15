@@ -8,59 +8,6 @@
 @prefix cc: <http://web.resource.org/cc/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<file:///home/kuno/code/vocab/misc/frbr.rdf>
-    dc:contributor "Bruce D'Arcus" ;
-    dc:creator "Ian Davis <http://purl.org/NET/iand>", "Richard Newman" ;
-    dc:date "2005-08-10" ;
-    dc:identifier "http://purl.org/vocab/frbr/frbr-core-20050810" ;
-    dc:rights "Copyright © 2005 Richard Newman and Ian Davis" ;
-    dc:title "Expression of Core FRBR Concepts in RDF"@en ;
-    dct:hasFormat <http://purl.org/vocab/frbr/frbr-core-20050810.html>, <http://purl.org/vocab/frbr/frbr-core-20050810.rdf> ;
-    dct:isVersionOf <http://purl.org/vocab/frbr/core#> ;
-    dct:issued "2005-07-15" ;
-    dct:replaces <http://purl.org/vocab/frbr/frbr-core-20050809> ;
-    vann:preferredNamespacePrefix "frbr" ;
-    vann:preferredNamespaceUri "http://purl.org/vocab/frbr/core#" ;
-    cc:license <http://creativecommons.org/licenses/by/2.0/uk/> ;
-    a cc:Work, owl:Ontology ;
-    rdfs:comment """
-      This vocabulary is a work in progress, it includes RDF classes for the group 1, 2 and 3 entities
-      described by the FRBR report and properties corresponding to the core relationships between
-      those entities. It does not yet describe attributes of the entities. Where possible, appropriate 
-      relationships with other vocabularies are included in order to place this vocabulary in the 
-      context of existing RDF work.
-    """@en, """
-      This vocabulary is an expression in RDF of the concepts and relations described in the
-      IFLA report on the Functional Requirements for Bibliographic Records (FRBR). 
-    """@en ;
-    skos:changeNote [
-        dc:creator "Ian Davis" ;
-        dc:date "2005-08-10" ;
-        rdf:value "Sorted properties and classes alphabetically by URI"
-    ], [
-        dc:creator "Ian Davis" ;
-        dc:date "2005-08-10" ;
-        rdf:value "Added experimental paraphrases to property and class descriptions"
-    ], [
-        dc:creator "Ian Davis" ;
-        dc:date "2005-08-10" ;
-        rdf:value "Fixed type in film example and added creator and date"
-    ] ;
-    skos:example <file:///home/kuno/code/vocab/misc/frbr-example-film-20050809.html> ;
-    skos:historyNote [
-        dc:creator "Ian Davis" ;
-        dc:date "2005-08-10" ;
-        rdf:value "Added alternate, alternateOf, reconfiguration, reconfigurationOf properties"
-    ], [
-        dc:creator "Ian Davis" ;
-        dc:date "2005-08-10" ;
-        rdf:value "Made domains and ranges of many properties more specific"
-    ], [
-        dc:creator "Ian Davis" ;
-        dc:date "2005-08-10" ;
-        rdf:value "Item is now not a subclass of geo:SpatialThing"
-    ] .
-
 <http://creativecommons.org/licenses/by/2.0/uk/>
     cc:permits cc:DerivativeWorks, cc:Distribution, cc:Reproduction ;
     cc:requires cc:Attribution, cc:Notice ;
@@ -1679,6 +1626,59 @@ vann:preferredNamespacePrefix
 
 vann:preferredNamespaceUri
     a owl:AnnotationProperty .
+
+<http://vocab.org/frbr/frbr-core-20050810.rdf>
+    dc:contributor "Bruce D'Arcus" ;
+    dc:creator "Ian Davis <http://purl.org/NET/iand>", "Richard Newman" ;
+    dc:date "2005-08-10" ;
+    dc:identifier "http://purl.org/vocab/frbr/frbr-core-20050810" ;
+    dc:rights "Copyright © 2005 Richard Newman and Ian Davis" ;
+    dc:title "Expression of Core FRBR Concepts in RDF"@en ;
+    dct:hasFormat <http://purl.org/vocab/frbr/frbr-core-20050810.html>, <http://purl.org/vocab/frbr/frbr-core-20050810.rdf> ;
+    dct:isVersionOf <http://purl.org/vocab/frbr/core#> ;
+    dct:issued "2005-07-15" ;
+    dct:replaces <http://purl.org/vocab/frbr/frbr-core-20050809> ;
+    vann:preferredNamespacePrefix "frbr" ;
+    vann:preferredNamespaceUri "http://purl.org/vocab/frbr/core#" ;
+    cc:license <http://creativecommons.org/licenses/by/2.0/uk/> ;
+    a cc:Work, owl:Ontology ;
+    rdfs:comment """
+      This vocabulary is a work in progress, it includes RDF classes for the group 1, 2 and 3 entities
+      described by the FRBR report and properties corresponding to the core relationships between
+      those entities. It does not yet describe attributes of the entities. Where possible, appropriate 
+      relationships with other vocabularies are included in order to place this vocabulary in the 
+      context of existing RDF work.
+    """@en, """
+      This vocabulary is an expression in RDF of the concepts and relations described in the
+      IFLA report on the Functional Requirements for Bibliographic Records (FRBR). 
+    """@en ;
+    skos:changeNote [
+        dc:creator "Ian Davis" ;
+        dc:date "2005-08-10" ;
+        rdf:value "Sorted properties and classes alphabetically by URI"
+    ], [
+        dc:creator "Ian Davis" ;
+        dc:date "2005-08-10" ;
+        rdf:value "Added experimental paraphrases to property and class descriptions"
+    ], [
+        dc:creator "Ian Davis" ;
+        dc:date "2005-08-10" ;
+        rdf:value "Fixed type in film example and added creator and date"
+    ] ;
+    skos:example <http://vocab.org/frbr/frbr-example-film-20050809.html> ;
+    skos:historyNote [
+        dc:creator "Ian Davis" ;
+        dc:date "2005-08-10" ;
+        rdf:value "Added alternate, alternateOf, reconfiguration, reconfigurationOf properties"
+    ], [
+        dc:creator "Ian Davis" ;
+        dc:date "2005-08-10" ;
+        rdf:value "Made domains and ranges of many properties more specific"
+    ], [
+        dc:creator "Ian Davis" ;
+        dc:date "2005-08-10" ;
+        rdf:value "Item is now not a subclass of geo:SpatialThing"
+    ] .
 
 cc:Attribution
     a cc:Requirement .

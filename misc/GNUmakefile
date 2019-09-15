@@ -19,19 +19,13 @@ all: cc.ttl frbr.ttl foaf.ttl dc.ttl dc-old.ttl dctype.ttl mo.ttl rdf.ttl rdfs.t
 # https://web.archive.org/web/20140905173355/http://vocab.org/vann/.turtle
 
 cc.ttl: | GNUmakefile
-	$(CURL) 'http://creativecommons.org/ns#' --output "cc.rdfa"
-	$(RAPPER) -i rdfa cc.rdfa -o turtle > cc.ttl
-	$(RM) cc.rdfa
+	$(RAPPER) -i rdfa 'http://creativecommons.org/ns#' -o turtle > cc.ttl
 
 frbr.ttl: | GNUmakefile
-	$(CURL) 'http://purl.org/vocab/frbr/frbr-core-20050810.rdf' --output 'frbr.rdf'
-	$(RAPPER) frbr.rdf -o turtle > frbr.ttl
-	$(RM) frbr.rdf
+	$(RAPPER) 'http://purl.org/vocab/frbr/frbr-core-20050810.rdf' -o turtle > frbr.ttl
 
 foaf.ttl: | GNUmakefile
-	$(CURL) --header "Accept: $(RDF)" 'http://xmlns.com/foaf/0.1/' --output "foaf.rdf"
-	$(RAPPER) foaf.rdf -o turtle > foaf.ttl
-	$(RM) foaf.rdf
+	$(RAPPER) 'http://xmlns.com/foaf/0.1/' -o turtle > foaf.ttl
 
 dc.ttl: | GNUmakefile
 	$(CURL) --header "Accept: $(TTL)" 'https://purl.org/dc/terms/' --output "$@"
