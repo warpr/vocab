@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TTL=text/turtle
+TTL2=application/x-turtle
+JSONLD=application/ld+json
+RDF=application/rdf+xml
+N3=text/rdf+n3
+NTRIPLES=text/plain
+
+curl --header "Accept: $JSONLD;$TTL;$TTL2;$RDF;$N3;$NTRIPLES" "$@"
+
