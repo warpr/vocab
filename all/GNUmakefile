@@ -11,7 +11,7 @@ RAPPER=rapper
 
 .PHONY: all
 
-all: cc.ttl foaf.ttl dc.ttl dc-old.ttl rdf.ttl rdfs.ttl schema.ttl dbpont.ttl prov.ttl
+all: cc.ttl foaf.ttl dc.ttl dc-old.ttl dctype.ttl rdf.ttl rdfs.ttl schema.ttl dbpont.ttl prov.ttl
 
 # vann.ttl:
 # This used to be available at http://vocab.org/vann/.turtle , the
@@ -33,6 +33,9 @@ dc.ttl: | GNUmakefile
 
 dc-old.ttl: | GNUmakefile
 	$(CURL) --header "Accept: $(TTL)" 'https://purl.org/dc/elements/1.1/' --output "$@"
+
+dctype.ttl: | GNUmakefile
+	$(CURL) --header "Accept: $(TTL)" 'http://purl.org/dc/dcmitype/' --output "$@"
 
 rdf.ttl: | GNUmakefile
 	$(CURL) 'https://www.w3.org/1999/02/22-rdf-syntax-ns#' --output "$@"
